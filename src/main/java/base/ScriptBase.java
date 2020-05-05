@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ScriptBase {
 public WebDriver driver;
-    @Test
+
     public void BeforeTest(){
 System.setProperty("webdriver.chrome.driver","./drivers/chromedriver");
   driver=new ChromeDriver();
