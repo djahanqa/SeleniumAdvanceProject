@@ -14,11 +14,15 @@ public class LogInTest extends ScriptBase {
 
      }
 
+     @Test(priority=1)
 
-    @Test
     public void vrtifySignInButton(){
         login =new LogInController(driver);
         login.signInTab();
-
-    }
+}
+        @Test(priority = 2)
+        public void vrtifyinvalidLogIn() throws InterruptedException {
+            login =new LogInController(driver);
+            login.invalidLogIn();
+     }
 }
