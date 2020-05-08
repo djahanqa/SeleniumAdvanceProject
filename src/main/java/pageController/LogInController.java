@@ -1,5 +1,6 @@
 package pageController;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,17 +28,19 @@ public class LogInController {
         public void signInTab(){
         signInButton.isDisplayed();
 
-
-
     }
-public void invalidLogIn() throws InterruptedException {
+public void invalidLogIn(WebDriver driver,String message) throws InterruptedException {
     Thread.sleep(1000);
 
     signInButton.click();
         userName.sendKeys("abcde@gmail.com");
         userPW.sendKeys("abcd1234");
         submitLogIn.click();
-    Assert.assertEquals(error,error);
+   // Assert.assertEquals(error,error);
+    errorMessage(driver,message);
+}
+public void errorMessage(WebDriver driver,String message){
+        driver.findElement(By.xpath("//p[contains(text(),'"+message+"')]")).isDisplayed();
 
 }
 }
