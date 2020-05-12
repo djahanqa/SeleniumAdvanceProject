@@ -10,14 +10,7 @@ public class LogInTest extends ScriptBase {
 
     LogInController login;
 
-    @BeforeTest
-    public void init() {
-        BeforeTest();
-
-    }
-
     @Test(priority = 1)
-
     public void vrtifySignInButton() {
         login = new LogInController(driver);
         login.signInTab();
