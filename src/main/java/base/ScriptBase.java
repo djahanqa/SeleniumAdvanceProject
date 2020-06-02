@@ -8,23 +8,30 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ScriptBase {
-public WebDriver driver;
+    public WebDriver driver;
 
-@Parameters("browser")
-@BeforeClass
-public void BeforeTest(String browser){
+    @Parameters({"browser","environtment"})
+    @BeforeClass
+    public void BeforeTest(String browser,String environtment){
 
-    if(browser.equalsIgnoreCase("chrome")){
+        if(browser.equalsIgnoreCase("chrome")){
 
-        System.setProperty("webdriver.chrome.driver","./drivers/chromedriver");
-  driver=new ChromeDriver();
-    }
+            System.setProperty("webdriver.chrome.driver","./drivers/chromedriver");
+            driver=new ChromeDriver();
+        }
 
-  driver.get("http://automationpractice.com");
-   }
-@AfterClass
-public void closeBrowser(){
-driver.quit();
+    if (environtment.equalsIgnoreCase("dev")){
+        driver.get("http://automationpractice.com");
+
+    }else if(environtment.equalsIgnoreCase("QA")){
+        driver.get("http://automationpractice.com");
+
+    }else if(environtment.equalsIgnoreCase("int"))
+        driver.get("http://automationpractice.com");
+        }
+    @AfterClass
+    public void closeBrowser(){
+        driver.quit();
 
     }
 }
